@@ -1,6 +1,7 @@
 #import psycopg2 module
 import psycopg2
-
+#import datetime
+from datetime import datetime
 #Create database connection
 db = psycopg2.connect('dbname=news')
 cursor = db.cursor()
@@ -52,8 +53,12 @@ def third_question():
     print ""
     print ""
     results = cursor.fetchall()
-    for result in results:
-        print result[0],"--",result[1],"%","errors"
+    #get date
+    date_str = results[0][0]
+    #format date
+    formated_date = date_str.strftime('%B %d %Y')
+    #output result
+    print formated_date,"--",results[0][1],"%","errors"
 
 
 #call the functions
