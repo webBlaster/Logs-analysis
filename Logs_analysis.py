@@ -19,12 +19,6 @@ second_sql = """ select authors.name,count(*) as num from log,articles,authors
             authors.id=articles.author group by authors.name order by num desc limit 3;"""
 
 #sql to get the day that led to more than one percent of errors
-#contains two views
-#err and req
-#create view err as select cast(time as date) as date,count(*) from log
-#where status !='200 OK' group by date order by count(*) desc;
-#create view req as select cast(time as date) as date,count(*) as num from log
-#group by date order by num desc;
 third_sql = """select err.date,(err.count*100.0/req.num) as perc from err join req on err.date=req.date 
             where (err.count*100.0/req.num) > 1.0 order by req.num desc;"""
 ### Define functions
