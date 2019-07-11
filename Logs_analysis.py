@@ -42,7 +42,7 @@ def second_question():
     print ""
     print "The most popular three authors of all time are:"
     for result in results:
-        print result[0], result[1], "--views"  
+        print result[0], result[1], "--views"
 
 
 # day that led to more than one percent of errors
@@ -57,8 +57,8 @@ def third_question():
     formated_date = date_str.strftime('%B %d %Y')
     # output result
     print formated_date, "--", results[0][1], "%", "errors"
-
-
+            
+            
 # call the functions
 first_question()
 second_question()
