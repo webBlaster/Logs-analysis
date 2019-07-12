@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # import psycopg2 module
 import psycopg2
 # import datetime
@@ -37,7 +38,7 @@ def first_question():
         print result[0], result[1], "--views"
 
 
-#the three most popular article authors of all time
+# the three most popular article authors of all time
 def second_question():
     cursor.execute(second_sql)
     results = cursor.fetchall()
@@ -45,26 +46,26 @@ def second_question():
     print ""
     print "The most popular three authors of all time are:"
     for result in results:
-        print result[0], result[1], "--views"  
+        print result[0], result[1], "--views"
 
 
-#day that led to more than one percent of errors
+# day that led to more than one percent of errors
 def third_question():
     cursor.execute(third_sql)
     print ""
     print ""
     results = cursor.fetchall()
-    #get date
+    # get date
     date_str = results[0][0]
-    #format date
+    # format date
     formated_date = date_str.strftime('%B %d %Y')
-    #output result
+    # output result
     print formated_date, "--", results[0][1], "%", "errors"
-
-
-#call the functions
+            
+            
+# call the functions
 first_question()
 second_question()
 third_question()
-#close db connection
+# close db connection
 db.close()      
