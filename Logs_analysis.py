@@ -24,10 +24,11 @@ second_sql = """ select authors.name,count(*) as num from log, articles,
             order by num desc limit 3;"""
 
 # sql to get the day that led to more than one percent of errors
-third_sql = """select err.date,
-            (err.count*100.0/req.num) as perc from err join req on err.date=req.date 
+third_sql = """select err.date,(err.count*100.0/req.num) as perc 
+            from err join req on err.date=req.date 
             where (err.count*100.0/req.num) > 1.0 order by req.num desc;"""
 # Define functions
+
 
 # the most popular three articles of all time
 def first_question():
